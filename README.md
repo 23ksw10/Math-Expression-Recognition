@@ -51,6 +51,7 @@ Adaptive 2D positional encoding 과Locality-aware feedforward layer 부분인데
 이미지의 평균 비율이 1:4인점을 볼 수 있는데요. 
 이 결과를 바탕으로 이미지를 64x256으로 resize 해주었습니다. 아울러 이미지 크기를 크게 해줄수록 성능이
 올라가는 것을 확인할 수 있었지만, 저희 환경에서 1:4 비율을 유지하면서 크기를 늘릴 수 없었습니다.
+0.06 정도의 성능이 올랐습니다.
 
 ## Augmentations
 
@@ -75,12 +76,24 @@ A.Compose(
 ## TTA
 
 Test datasets에서도 세로가 가로보다 긴 이미지들이 있을거라 예상하여, 그러한 이미지들을 90° 그리고 -90°로 rotate 하여 결과를 내보았습니다. 90°회전을 시켰을 때가 가장 성능이 좋았습니다.
+0.003 소폭 상승 했습니다.
 
 ## Final Score
 
 |Public LB |Private LB|
 |:---|:---|
 |0.7750 |0.55| 
+
+## Discussion
+
+### Improvements
+
+Next time I would like to:
+
+    Softmax w/ background class
+    Lovasz Loss
+    Inplace BatchNorm (potentially huge memory saving)
+
 
 
 모든 데이터는 팀 저장소에서 train-ready 포맷으로 다운 가능하다.
