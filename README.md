@@ -90,13 +90,13 @@ Test datasets에서도 세로가 가로보다 긴 이미지들이 있을거라 �
 
 Next time I would like to:
 
-    Softmax w/ background class
-    Lovasz Loss
-    Inplace BatchNorm (potentially huge memory saving)
+    Other Schedulers
+    Other Loss function
+    Swin Transformer
 
 
 
-모든 데이터는 팀 저장소에서 train-ready 포맷으로 다운 가능하다.
+## 모든 데이터는 팀 저장소에서 train-ready 포맷으로 다운 가능하다.
 
 ```
 [dataset]/
