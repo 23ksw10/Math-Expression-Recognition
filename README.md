@@ -80,7 +80,7 @@ Rotate 90° works best.
 |Public LB |Private LB|
 |:---|:---|
 |0.7750 |0.55| 
-<br/><br/>
+
 
 모든 데이터는 팀 저장소에서 train-ready 포맷으로 다운 가능하다.
 
