@@ -40,7 +40,7 @@ So I tested both.
 |:---|:---| :---|
 |2D-Concat |FC| 0.7698|
 | A2DPE|Conv | 0.7717
-<br/><br/>
+
 
 ## Image Sizes
 
