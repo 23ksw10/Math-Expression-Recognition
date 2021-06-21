@@ -30,11 +30,11 @@ pip install tensorboardX tqdm pyyaml psutil
 
 ## Models
 
-I used [SATRN](https://github.com/clovaai/SATRN) model. It doesn't provide Pytorch version. So I implemented myself.
-I changed a few of my own encoder and decoder modules.
+[SATRN](https://github.com/clovaai/SATRN)을 사용 했습니다. 공식적으로 Pytorch version을 지원하지 않기에 직접 구현하기로 하였습니다.
+Baseline 코드로 어느 정도 뼈대를 제공 했지만 논문에서 가장 강조한 부분들이 빠져 있었습니다.
 
-SATRN emphasizes Adaptive 2D positional encoding and Locality-aware feedforward layer.
-So I tested both. 
+Adaptive 2D positional encoding 과Locality-aware feedforward layer 부분인데요.
+이부분을 논문과 같이 구현해 어느 정도 성능이 오르는지 확인해 보았습니다.
 
 |Positional Encoding |Feedforward layer| Public LB |
 |:---|:---| :---|
@@ -48,7 +48,9 @@ So I tested both.
 
 ![README%20eeb1c0530360423a914964ca597bd7c5/ratio.png](README%20eeb1c0530360423a914964ca597bd7c5/ratio.png)
 
-Aspect ratio is 1:4. So I resized images to 64x256. Also I found larger image sizes gave better results. But our gpu can't handle larger sizes. So I choosed 64x256.
+이미지의 평균 비율이 1:4인점을 볼 수 있는데요. 
+이 결과를 바탕으로 이미지를 64x256으로 resize 해주었습니다. 아울러 이미지 크기를 크게 해줄수록 성능이
+올라가는 것을 확인할 수 있었지만, 저희 환경에서 1:4 비율을 유지하면서 크기를 늘릴 수 없었습니다.
 
 ## Augmentations
 
@@ -68,12 +70,11 @@ A.Compose(
     )
 ```
 
-I found these augs worked better than complicated crops/flips.
+복잡한 augmentation 보다 위에 볼 수 있는 간단한 augmentation 성능이 더 좋았습니다.
 
 ## TTA
 
-In test datasets, there are images that their heights is longer than weight. Our model doesn't inference those images. So I rotate those images 90° and -90°. 
-Rotate 90° works best.
+Test datasets에서도 세로가 가로보다 긴 이미지들이 있을거라 예상하여, 그러한 이미지들을 90° 그리고 -90°로 rotate 하여 결과를 내보았습니다. 90°회전을 시켰을 때가 가장 성능이 좋았습니다.
 
 ## Final Score
 
