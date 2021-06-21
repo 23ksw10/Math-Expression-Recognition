@@ -1,65 +1,109 @@
+# README
+
 # 업스테이지 수학 수식 OCR 모델
+
+*수식은 여러 자연과학 분야에서 어려운 개념들은 간단하고 간결하게 표현하는 방법으로서 널리 사용되어 왔습니다. Latex 또한 여러 과학 분야에서 사용되는 논문 및 기술 문서 작성 포맷으로서 현재까지도 널리 사용되고 있습니다.*
+
+*수식 인식의 경우는, 기존의 광학 문자 인식 (optical character recognition)과는 달리 multi line recognition을 필요로 합니다. 우리가 알고 있는 분수 표현, 극한, 시그마 와 같은 표현만 보더라도 수식 인식 문제에서는 multi line recognition이 중요한 문제라는 것을 알 수 있습니다*
+
+*수식인식 문제는 단순하게 수식을 인식하는 문제로도 볼 수 있지만 기존 single line recognition 기반의 OCR이 아닌 multi line recognition을 이용하는 OCR task로도 인식할 수 있습니다. Multi line recognition 이란 관점에서 기존 OCR과는 차별화되는 task라고 할 수 있습니다.*
 
 ## Requirements
 
 - Python 3
-- [PyTorch][pytorch]
+- [PyTorch](https://pytorch.org/)
 
 All dependencies can be installed with PIP.
 
-```sh
+```
 pip install tensorboardX tqdm pyyaml psutil
 ```
 
-현재 검증된 GPU 개발환경으로는
-- `Pytorch 1.0.0 (CUDA 10.1)`
-- `Pytorch 1.4.0 (CUDA 10.0)`
-- `Pytorch 1.7.1 (CUDA 11.0)`
-
-
-## Supported Models
-
-- [CRNN][arxiv-zhang18]
-- [SATRN](https://github.com/clovaai/SATRN)
-
+현재 검증된 GPU 개발환경으로는 - `Pytorch 1.0.0 (CUDA 10.1)` - `Pytorch 1.4.0 (CUDA 10.0)` - `Pytorch 1.7.1 (CUDA 11.0)`
 
 ## Supported Data
-- [Aida][Aida] (synthetic handwritten)
-- [CROHME][CROHME] (online handwritten)
-- [IM2LATEX][IM2LATEX] (pdf, synthetic handwritten)
-- [Upstage][Upstage] (print, handwritten)
 
+- [Aida](https://www.kaggle.com/aidapearson/ocr-data) (synthetic handwritten)
+- [CROHME](https://www.isical.ac.in/~crohme/) (online handwritten)
+- [IM2LATEX](http://lstm.seas.harvard.edu/latex/) (pdf, synthetic handwritten)
+- [Upstage](https://www.upstage.ai/) (print, handwritten)
+
+## Models
+
+I used [SATRN](https://github.com/clovaai/SATRN) model. It doesn't provide Pytorch version. So I implemented myself.
+I changed a few of my own encoder and decoder modules.
+
+SATRN emphasizes Adaptive 2D positional encoding and Locality-aware feedforward layer.
+So I tested both. 
+
+|Positional Encoding |Feedforward layer| Public LB |
+|:---|:---| :---|
+|2D-Concat |FC| 0.7698|
+| A2DPE|Conv | 0.7717
+<br/><br/>
+
+## Image Sizes
+
+128x128, 64x256
+
+![README%20eeb1c0530360423a914964ca597bd7c5/ratio.png](README%20eeb1c0530360423a914964ca597bd7c5/ratio.png)
+
+Aspect ratio is 1:4. So I resized images to 64x256. Also I found larger image sizes gave better results. But our gpu can't handle larger sizes. So I choosed 64x256.
+
+## Augmentations
+
+I used the following [Albumentations](https://github.com/albu/albumentations):
+
+```
+A.Compose(
+        [
+            A.Resize(options.input_size.height, options.input_size.width)
+            A.Normalize(
+                         mean=(0.6156),
+                         std=(0.1669), max_pixel_value=255.0, p=1.0
+                            ),
+            ToTensorV2()
+        ]
+
+    )
+```
+
+I found these augs worked better than complicated crops/flips.
+
+## TTA
+
+In test datasets, there are images that their heights is longer than weight. Our model doesn't inference those images. So I rotate those images 90° and -90°. 
+Rotate 90° works best.
+
+## Final Score
+
+|Public LB |Private LB|
+|:---|:---|
+|0.7750 |0.55| 
+<br/><br/>
 
 모든 데이터는 팀 저장소에서 train-ready 포맷으로 다운 가능하다.
+
 ```
 [dataset]/
 ├── gt.txt
 ├── tokens.txt
 └── images/
     ├── *.jpg
-    ├── ...     
+    ├── ...
     └── *.jpg
 ```
-
 
 ## Usage
 
 ### Training
 
-```sh
+```
 python train.py
 ```
 
-
 ### Evaluation
 
-```sh
+```
 python evaluate.py
 ```
-
-[arxiv-zhang18]: https://arxiv.org/pdf/1801.03530.pdf
-[CROHME]: https://www.isical.ac.in/~crohme/
-[Aida]: https://www.kaggle.com/aidapearson/ocr-data
-[Upstage]: https://www.upstage.ai/
-[IM2LATEX]: http://lstm.seas.harvard.edu/latex/
-[pytorch]: https://pytorch.org/
