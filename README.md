@@ -8,6 +8,12 @@
 
 *수식인식 문제는 단순하게 수식을 인식하는 문제로도 볼 수 있지만 기존 single line recognition 기반의 OCR이 아닌 multi line recognition을 이용하는 OCR task로도 인식할 수 있습니다. Multi line recognition 이란 관점에서 기존 OCR과는 차별화되는 task라고 할 수 있습니다.*
 
+*Mathematics has been widely used as a simple and concise way of expressing difficult concepts in various fields of natural science. Latex is also widely used to date as a paper and technical writing format used in various scientific fields.*
+
+*Equation recognition requires multi-line recognition, unlike conventional optical character recognition. Just by looking at expressions such as fractional expressions, limits, and sigma that we know, we can see that multi-line recognition is an important issue in the equation recognition problem.
+
+*The equation recognition problem can be seen as a simple equation recognition problem, but it can also be recognized as an OCR task using multi-line recognition rather than an existing single-line recognition-based OCR. From the perspective of multi-line recognition, it is a task that is different from the existing OCR.
+
 ## Requirements
 
 - Python 3
