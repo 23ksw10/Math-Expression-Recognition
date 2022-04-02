@@ -10,9 +10,9 @@
 
 *Mathematics has been widely used as a simple and concise way of expressing difficult concepts in various fields of natural science. Latex is also widely used to date as a paper and technical writing format used in various scientific fields.*
 
-*Equation recognition requires multi-line recognition, unlike conventional optical character recognition. Just by looking at expressions such as fractional expressions, limits, and sigma that we know, we can see that multi-line recognition is an important issue in the equation recognition problem.
+*Equation recognition requires multi-line recognition, unlike conventional optical character recognition. Just by looking at expressions such as fractional expressions, limits, and sigma that we know, we can see that multi-line recognition is an important issue in the equation recognition problem.*
 
-*The equation recognition problem can be seen as a simple equation recognition problem, but it can also be recognized as an OCR task using multi-line recognition rather than an existing single-line recognition-based OCR. From the perspective of multi-line recognition, it is a task that is different from the existing OCR.
+*The equation recognition problem can be seen as a simple equation recognition problem, but it can also be recognized as an OCR task using multi-line recognition rather than an existing single-line recognition-based OCR. From the perspective of multi-line recognition, it is a task that is different from the existing OCR.*
 
 ## Requirements
 
