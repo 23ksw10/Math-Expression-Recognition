@@ -138,11 +138,7 @@ python evaluate.py
 
 
 
-# 수식인식기 프로젝트 소개
-![image](https://user-images.githubusercontent.com/51700219/147439435-30a348cc-14b7-45d1-85c3-0dcc23c1a666.png)
- - 위의 예시에서 처럼 어떤 수식이 적힌 이미지를 input으로 받으면 이 수식에 대한 latex문법 표현식을 출력해주는 모델을 만드는 프로젝트이다.
- - 위의 예시에서의 수식이미지는 컴퓨터로 인쇄된 수식이미지 이지만 실제로는 손으로 쓴 수식이미지도 사용되었다.
- - 이 프로젝트에서 사용한 데이터에서는 이미 text localization이 수행된 데이터들이다. 즉, 이 프로젝트에서는 text recognition만 한다.
+
 
 # SATRN 모델 소개
 ![image](https://user-images.githubusercontent.com/51700219/147440473-51748720-1f0b-475c-8601-04f9fa7f406a.png)
@@ -150,10 +146,7 @@ python evaluate.py
  - Transformer구조를 가진 부분은 기존 Transformer와 구조가 유사하지만 input으로 자연어가 아닌 feature map을 받으므로 이 부분을 고려하여 기존 Transformer와는 조금씩 다른 부분들을 가지고 있다.
  - SATRN 논문리뷰 : https://github.com/bcaitech1/p4-fr-9-googoo/discussions/4
 
-# 평가 metric 
-![image](https://user-images.githubusercontent.com/51700219/147821386-81181bbb-8969-4749-bd39-e0f00115cd76.png)
- - metric으로는 sentence accuracy를 사용한다.
- - 예측 문장과 정답 문장이 완벽히 일치하는 데이터의 비율이다.
+
 
 # 실험기록
 #### 대회서버가 불안정하여 리더보드에 제출이 안되는 이유로 모든 실험은 리더보드 점수가 아닌 validation data에 대한 점수를 기반으로 진행 하였다. 다만 다른 분들의 말에 따르면 validation 점수와 리더보드 점수가 거의 똑같다고 한다. 
