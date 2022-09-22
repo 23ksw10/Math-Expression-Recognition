@@ -38,6 +38,8 @@ pip install tensorboardX tqdm pyyaml psutil
 
 ## Models
 
+![image](https://user-images.githubusercontent.com/51700219/147440473-51748720-1f0b-475c-8601-04f9fa7f406a.png)
+
 [SATRN](https://github.com/clovaai/SATRN)을 사용 했습니다. 공식적으로 Pytorch version을 지원하지 않기에 직접 구현하기로 하였습니다.
 Baseline 코드로 어느 정도 뼈대를 제공 했지만 논문에서 가장 강조한 부분들이 빠져 있었습니다.
 
