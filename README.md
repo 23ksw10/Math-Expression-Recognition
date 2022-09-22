@@ -275,16 +275,7 @@ python evaluate.py
  - 일단 beam search를 이용하면 greedy보다는 확률이 높은 sequence를 찾을 수 있기 때문에 긴 문장을 예측하는데 도움이 될 것 같다. 또한 같은 토큰을 연속해서 예측한 결과 뿐만 아니라 다른 예측결과도 찾게 되므로 같은 토큰을 연속으로 예측하는 경우도 줄여줄 수 있을 것 같다.
  - 시간이 부족하여 구현하지 못하였다.
 
-### 궁금한 점
- - positional encoding에도 dropout을 적용하는게 맞는걸까?
- - positional encoding vector가 나타내는 것은 position정보 뿐이다.
- - dropout을 적용하면 제거되지 않은 값들은 (1 / (1-dropout rate))가 곱해져서 rescale된다.
- - 특정 위치의 positional encoding vector에 대해서 매번 다른 값이 제거되고 rescale될 경우 같은 위치를 매번 다른 벡터로 나타내게 된다.
- - 예를 들어서 첫번째 position을 나타내는 벡터가 [1, 1, 1, 1, 1]이고 dropout을 0.1확률로 적용한다면 어쩔때는 [0, 1.111, 1.111, 1.111, 1.111]이 첫번째 포지션을 나타내게 되고 어쩔때는 [1.111, 1.111, 1.111, 0, 1.111]이 첫번째 포지션을 나타내게 될 것이다.
- - 이건 잘못된게 아닐까 싶다.
- - 실험해보고 싶은데 시간이 없다. 
- - [8월 17일 업데이트] 조교님께 질문해보니 positional encoding에 적용되는 dropout은 column단위가 아니라 row단위로 적용된다고 한다. 즉, 각 positional encoding벡터에 대해서 벡터의 원소를 랜덤하게 dropout시키는게 아니라 positional encoding 벡터 자체를 랜덤하게 drop out 시킨다고 한다(부캠이 끝난 뒤에도 질문을 계속 받아주신 조교님께 정말 감사드린다).
- - 직접 transformer 코드를 찍어보면서 확인하셨다고 한다. 나도 직접 찍어보고 확인해봐야 겠다.
+
 
 ### 아쉬운 점
  - teacher forcing ratio를 조금씩 낮추는 방식을 실험해보고 싶었는데 못했다
