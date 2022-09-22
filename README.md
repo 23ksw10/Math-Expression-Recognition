@@ -51,6 +51,10 @@ Adaptive 2D positional encoding 과Locality-aware feedforward layer 부분인데
 |2D-Concat |FC| 0.7698|
 | A2DPE|Conv | 0.7717
 
+## 평가 metric 
+![image](https://user-images.githubusercontent.com/51700219/147821386-81181bbb-8969-4749-bd39-e0f00115cd76.png)
+ - metric으로는 sentence accuracy를 사용한다.
+ - 예측 문장과 정답 문장이 완벽히 일치하는 데이터의 비율이다.
 
 ## Image Sizes
 
