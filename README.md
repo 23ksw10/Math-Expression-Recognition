@@ -3,6 +3,7 @@
 # 업스테이지 수학 수식 OCR 모델
 
 ![image](https://user-images.githubusercontent.com/51700219/147439435-30a348cc-14b7-45d1-85c3-0dcc23c1a666.png)
+
 *수식은 여러 자연과학 분야에서 어려운 개념들은 간단하고 간결하게 표현하는 방법으로서 널리 사용되어 왔습니다. Latex 또한 여러 과학 분야에서 사용되는 논문 및 기술 문서 작성 포맷으로서 현재까지도 널리 사용되고 있습니다.*
 
 *수식 인식의 경우는, 기존의 광학 문자 인식 (optical character recognition)과는 달리 multi line recognition을 필요로 합니다. 우리가 알고 있는 분수 표현, 극한, 시그마 와 같은 표현만 보더라도 수식 인식 문제에서는 multi line recognition이 중요한 문제라는 것을 알 수 있습니다*
