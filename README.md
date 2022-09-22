@@ -1,6 +1,6 @@
 # README
 
-# 업스테이지 수학 수식 OCR 모델
+# Mathematics OCR Model
 
 ![image](https://user-images.githubusercontent.com/51700219/147439435-30a348cc-14b7-45d1-85c3-0dcc23c1a666.png)
 
@@ -27,7 +27,7 @@ All dependencies can be installed with PIP.
 pip install tensorboardX tqdm pyyaml psutil
 ```
 
-현재 검증된 GPU 개발환경으로는 - `Pytorch 1.0.0 (CUDA 10.1)` - `Pytorch 1.4.0 (CUDA 10.0)` - `Pytorch 1.7.1 (CUDA 11.0)`
+ - `Pytorch 1.0.0 (CUDA 10.1)` - `Pytorch 1.4.0 (CUDA 10.0)` - `Pytorch 1.7.1 (CUDA 11.0)`
 
 ## Supported Data
 
@@ -40,10 +40,8 @@ pip install tensorboardX tqdm pyyaml psutil
 
 ![image](https://user-images.githubusercontent.com/51700219/147440473-51748720-1f0b-475c-8601-04f9fa7f406a.png)
 
-[SATRN](https://github.com/clovaai/SATRN)을 사용 했습니다. 공식적으로 Pytorch version을 지원하지 않기에 직접 구현하기로 하였습니다.
-Baseline 코드로 어느 정도 뼈대를 제공 했지만 논문에서 가장 강조한 부분들이 빠져 있었습니다.
 
-We use [SATRN](https://github.com/clovaai/SATRN). But it did not support Pytorch version so I have to make our own code.
+We use [SATRN](https://github.com/clovaai/SATRN). But it did not support Pytorch version so we have to make our own code.
 
 Adaptive 2D positional encoding 과Locality-aware feedforward layer 부분인데요.
 이부분을 논문과 같이 구현해 어느 정도 성능이 오르는지 확인해 보았습니다.
@@ -55,7 +53,7 @@ Adaptive 2D positional encoding 과Locality-aware feedforward layer 부분인데
 
 ## 평가 metric 
 ![image](https://user-images.githubusercontent.com/51700219/147821386-81181bbb-8969-4749-bd39-e0f00115cd76.png)
- - metric으로는 sentence accuracy를 사용한다.
+ - We use sentence accuracy for metric
  - 예측 문장과 정답 문장이 완벽히 일치하는 데이터의 비율이다.
 
 ## Image Sizes
@@ -138,15 +136,6 @@ python train.py
 python evaluate.py
 ```
 
-
-
-
-
-# SATRN 모델 소개
-![image](https://user-images.githubusercontent.com/51700219/147440473-51748720-1f0b-475c-8601-04f9fa7f406a.png)
- - input 이미지는 CNN을 거쳐서 feature map이 된 후 Transformer 구조를 가진 네트워크를 통과하여 최종 output이 된다.
- - Transformer구조를 가진 부분은 기존 Transformer와 구조가 유사하지만 input으로 자연어가 아닌 feature map을 받으므로 이 부분을 고려하여 기존 Transformer와는 조금씩 다른 부분들을 가지고 있다.
- - SATRN 논문리뷰 : https://github.com/bcaitech1/p4-fr-9-googoo/discussions/4
 
 
 
